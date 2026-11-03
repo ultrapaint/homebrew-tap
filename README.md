@@ -12,5 +12,5 @@ The app is not signed yet. Once after each install or upgrade, run:
 xattr -dr com.apple.quarantine /Applications/Ultrapaint.app
 ```
 
-Update it with `brew upgrade --cask ultrapaint`. The cask follows each release of
-Ultrapaint: its release workflow updates it.
+Update it with `brew upgrade --cask ultrapaint`. The cask follows Ultrapaint's latest release
+within the hour (`.github/workflows/follow.yml`).
