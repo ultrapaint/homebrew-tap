@@ -1,6 +1,6 @@
 cask "ultrapaint" do
-  version "0.2.0"
-  sha256 "01f797109c95fc624db5b4245074b7815fe7f7026d7661bed36111445d6530d7"
+  version "0.1.0"
+  sha256 "1724b0a59effbae935c3f2ce6f4b320bb6ba87ccc7b59f2a3de8b244727604e5"
 
   url "https://github.com/ultrapaint/ultrapaint/releases/download/v#{version}/ultrapaint-#{version}-mac-arm64.dmg"
   name "Ultrapaint"
