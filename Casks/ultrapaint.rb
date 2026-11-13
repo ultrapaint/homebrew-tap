@@ -11,6 +11,15 @@ cask "ultrapaint" do
   depends_on macos: :monterey
 
   app "Ultrapaint.app"
+  # The ultrapaint command, a launcher the app ships that finds the app from where it is.
+  binary "#{appdir}/Ultrapaint.app/Contents/Resources/bin/ultrapaint"
+
+  # A command the app itself wrote into Homebrew's bin (Settings › Agents › Install the command)
+  # gives way to the link above.
+  preflight_steps do
+    remove "{{HOMEBREW_PREFIX}}/bin/ultrapaint",
+           content_contains: "The ultrapaint command of the Ultrapaint app"
+  end
 
   zap trash: [
     "~/Library/Application Support/Ultrapaint",
@@ -21,10 +30,14 @@ cask "ultrapaint" do
   ]
 
   caveats <<~EOS
-    Ultrapaint is not signed yet, so macOS says it "is damaged" until you run, once
-    after each install or upgrade:
+    Ultrapaint is not signed yet, so macOS says it "is damaged", and may stop the
+    ultrapaint command, until you run, once after each install or upgrade:
 
       xattr -dr com.apple.quarantine /Applications/Ultrapaint.app
+
+    Agents outside the app reach it through `ultrapaint mcp`, e.g.:
+
+      claude mcp add ultrapaint -s user -- ultrapaint mcp
 
     Update it with: brew upgrade --cask ultrapaint
   EOS
