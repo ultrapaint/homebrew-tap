@@ -7,7 +7,7 @@ cask "ultrapaint" do
   desc "Design tool that lives in your repo, next to your coding agents"
   homepage "https://github.com/ultrapaint/ultrapaint"
 
-  # The app updates itself (ADR 0078), so `brew upgrade` leaves it alone unless it is named.
+  # The app updates itself (ADR 0078): `brew upgrade` leaves a bundle already at this version alone.
   auto_updates true
 
   depends_on arch: :arm64
