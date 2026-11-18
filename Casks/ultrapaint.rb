@@ -7,6 +7,9 @@ cask "ultrapaint" do
   desc "Design tool that lives in your repo, next to your coding agents"
   homepage "https://github.com/ultrapaint/ultrapaint"
 
+  # The app updates itself (ADR 0078), so `brew upgrade` leaves it alone unless it is named.
+  auto_updates true
+
   depends_on arch: :arm64
   depends_on macos: :monterey
 
@@ -39,6 +42,6 @@ cask "ultrapaint" do
 
       claude mcp add ultrapaint -s user -- ultrapaint mcp
 
-    Update it with: brew upgrade --cask ultrapaint
+    It updates itself; to update it through Homebrew: brew upgrade --cask ultrapaint
   EOS
 end
